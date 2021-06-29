@@ -96,25 +96,25 @@ def authorized():
     if request.args.get('code'):              
         cache = _load_cache()                 
         result = _build_msal_app(cache=cache).acquire_token_by_authorization_code(
-            request.args['code'],
-            scopes=Config.SCOPE,
+            request.args['code'],       
+            scopes=Config.SCOPE,        
             redirect_uri=url_for('authorized', _external=True, _scheme='https')
         )                                   
                                               
-        result = None                         
+        # result = None                         
         if "error" in result:                 
             return render_template("auth_error.html", result=result)
         session["user"] = result.get("id_token_claims")
         # Note: In a real app, we'd use the 'name' property from session["user"] below
         # Here, we'll use the admin username for anyone who is authenticated by MS
         user = User.query.filter_by(username="admin").first()
-        login_user(user)
-        _save_cache(cache)
-    return redirect(url_for('home'))
-
-@app.route('/logout')
-def logout():
-    logout_user()
+        login_user(user)                
+        _save_cache(cache)              
+    return redirect(url_for('home'))  
+                                      
+@app.route('/logout')                
+def logout():                        
+    logout_user()                    
     if session.get("user"): # Used MS Login
         # Wipe out user and its token cache from session
         session.clear()
