@@ -5,12 +5,12 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config(object):                                                                                                                                  
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'                                                                                          
                                                                                                                                                        
-    BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') or 'cmsprjt01'                                                                                      
-    BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') or 'T97E/sXWhdhRKSYBBGyCqr7jwNjGoN18txW0g6TQktkSymJXraMsfgKb1zoictL47s7BifhNHX8a6aZaRcgX/Q=='            
+    BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') or 'project1cms'                                                                                      
+    BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') or 'dRQf6VEB9J3PduS4TkrMiHAn3FvcDXpytH+8d4vjhGDG5CDhPVqFS11wKmXhUWJN9XyxlMqoI/r+0hKboV8Bxg=='            
     BLOB_CONTAINER = os.environ.get('BLOB_CONTAINER') or 'images'                                                                                     
                                                                                                                                                        
-    SQL_SERVER = os.environ.get('SQL_SERVER') or 'cmsproj-db-server.database.windows.net'                                                            
-    SQL_DATABASE = os.environ.get('SQL_DATABASE') or 'cms-db-project'                                                                                 
+    SQL_SERVER = os.environ.get('SQL_SERVER') or 'project1-cms-server.database.windows.net'                                                            
+    SQL_DATABASE = os.environ.get('SQL_DATABASE') or 'project1-cms'                                                                                 
     SQL_USER_NAME = os.environ.get('SQL_USER_NAME') or 'cious'                                                                                        
     SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or 'Lion&2Kings'                                                                                    
     # Below URI may need some adjustments for driver version, based on your OS, if running locally                                                     
@@ -19,7 +19,7 @@ class Config(object):
                                                                                                                                                        
     ### Info for MS Authentication ###                                                                     
     ### As adapted from: https://github.com/Azure-Samples/ms-identity-python-webapp ###                    
-    CLIENT_SECRET = ".0MK3zDCb.4__4VQG2gDMc5Xcibg3K~Sw1"                                                   
+    CLIENT_SECRET = "4E.sL~E5sU-6.gn~yF5beeUTD7uFYfs36M"                                                   
     # In your production app, Microsoft recommends you to use other ways to store your secret,
     # such as KeyVault, or environment variable as described in Flask's documentation here:
     # https://flask.palletsprojects.com/en/1.1.x/config/#configuring-from-environment-variables
@@ -30,7 +30,7 @@ class Config(object):
     AUTHORITY = "https://login.microsoftonline.com/common"  # For multi-tenant app, else put tenant name
     # AUTHORITY = "https://login.microsoftonline.com/Enter_the_Tenant_Name_Here"
                                                        
-    CLIENT_ID = "52e2cf74-d17d-4f95-bbc7-b902390859a5"
+    CLIENT_ID = "14705001-4fd8-454f-aa00-7bf9e0ea3d0a"
                                                      
     REDIRECT_PATH = "/getAToken"  # Used to form an absolute URL; must match to app's redirect_uri set in AAD
                                                      
