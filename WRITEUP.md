@@ -6,8 +6,8 @@ Azure VMs offer developer more control over the environment ranging from OS to t
 
 **App Service** is Azure App Service is Microsoft's PaaS (Platform-as-a-Service) cloud service by Microsoft. Azure App Service is an HTTP-based service for hosting web applications, REST APIs, and mobile back ends. This service takes away some of the additional responsibilities of customer, and gives it back to cloud provider. The developer only needs to deploy the code, and focus only on the development part of project. This is very useful for teams with less manpower, and less experience with managing such hardware.
 
-| Factor |  VM   |  App service  |
-|:-------|:-----:|--------------:|
+| Factor         |  VM   |  App service  |
+|:-------|:-----:|:--------------:|
 |**1. Cost**| Azure VMs are more expensive to run. | App services are cheaper to run|
 |**2. Scalability**| Azure VMs are preferred for apps, which have scope to expand for future.| Vertical or Horizontal scaling|
 |**3. Availability**|Multiple VMs can be grouped to provide high availability| High availability, auto-scaling and support of both Linux and Windows environments.|
