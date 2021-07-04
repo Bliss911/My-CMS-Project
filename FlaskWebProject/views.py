@@ -21,16 +21,6 @@ imageSourceUrl = 'https://'+ app.config['BLOB_ACCOUNT']  + '.blob.core.windows.n
 def home():
     user = User.query.filter_by(username=current_user.username).first_or_404()
     posts = Post.query.all()
-    log = request.values.get('log_button')
-    if log:
-        if log == 'info':
-            app.logger.info('No issue.')
-        elif log == 'warning':
-            app.logger.warning('Warning occurred.')
-        elif log == 'error':
-            app.logger.error('Error occurred.')
-        elif log == 'critical':
-            app.logger.critical('Critical error occurred.')
     return render_template(
         'index.html',
         title='Home Page',
@@ -77,8 +67,11 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
+            app.logger.info('Invalid Username or Password')
             return redirect(url_for('login'))
         login_user(user, remember=form.remember_me.data)
+        flash('Login successful!!!')
+        app.logger.info('Admin Logged in Successfully!!')
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('home')
@@ -99,7 +92,14 @@ def authorized():
             request.args['code'],                                              
             scopes=Config.SCOPE,                                               
             redirect_uri=url_for('authorized', _external=True, _scheme='https')
-        )                                                                      
+        )               
+                          
+        # result = _build_msal_app(cache=cache).acquire_token_by_auth_code_flow(
+        #     session.get("flow", {}), request.args)
+        # if "error" in result:
+        #     return render_template("auth_error.html", result=result)
+        # session["user"] = result.get("id_token_claims")
+        # _save_cache(cache)                                                                     
                                                                                
         if "error" in result:                                                  
             return render_template("auth_error.html", result=result)           
